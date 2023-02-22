@@ -34,5 +34,6 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
     Route::prefix('destination')->name('destination.')->group(function () {
         Route::get('', [DestinationController::class, 'index'])->name('index');
         Route::get('create', [DestinationController::class, 'create'])->name('create');
+        Route::post('', [DestinationController::class, 'store'])->name('store');
     });
 });

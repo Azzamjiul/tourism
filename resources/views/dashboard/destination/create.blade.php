@@ -22,7 +22,41 @@
           </div>
 
           <div class="card-body">
-            
+            <form action="{{ route('dashboard.destination.store') }}" method="POST" class="form">
+                @csrf
+
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Area</label>
+                    <select name="area_id" class="form-control" required>
+                        <option value="">Choose one</option>
+                        @foreach ($areas as $area)
+                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input type="text" name="address" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Address URL</label>
+                    <input type="text" name="address_url" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea name="description" class="form-control" cols="30" rows="5"></textarea>
+                </div>
+
+                <button class="btn btn-primary">Submit</button>
+            </form>
           </div>
 
           <div class="card-footer clearfix">
