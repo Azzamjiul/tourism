@@ -17,7 +17,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ asset('admin-theme') }}/index2.html"><b>Admin</b>LTE</a>
+    <a href="{{ route('welcome') }}"><b>TOURISM</b> Surabaya</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
