@@ -28,7 +28,7 @@ Route::post('login', [LoginController::class, 'login'])->name('loginProcess');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Admin
-Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
     
     // Destination
     Route::prefix('destination')->name('destination.')->group(function () {

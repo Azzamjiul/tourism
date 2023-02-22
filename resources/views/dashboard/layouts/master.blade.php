@@ -68,7 +68,7 @@
           <li class="nav-header">Dashboard</li>
 
           <li class="nav-item">
-            <a href="{{ route('admin.destination.index') }}" class="nav-link">
+            <a href="{{ route('dashboard.destination.index') }}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>Destinations</p>
             </a>
@@ -118,7 +118,5 @@
 <script src="{{ asset('admin-theme') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin-theme') }}/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('admin-theme') }}/dist/js/demo.js"></script>
 </body>
 </html>

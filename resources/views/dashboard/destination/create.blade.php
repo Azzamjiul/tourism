@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('dashboard.layouts.master')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -18,7 +18,7 @@
           <div class="card-header">
             <h3 class="card-title">New Destination</h3>
 
-            <a href="{{ route('admin.destination.index') }}" class="float-right btn btn-sm btn-danger">Cancel</a>
+            <a href="{{ route('dashboard.destination.index') }}" class="float-right btn btn-sm btn-danger">Cancel</a>
           </div>
 
           <div class="card-body">

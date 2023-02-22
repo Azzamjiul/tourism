@@ -9,11 +9,11 @@ class DestinationController extends Controller
 {
     public function index ()
     {
-        return view('admin.destination.index');
+        return view('dashboard.destination.index');
     }
 
     public function create ()
     {
-        return view('admin.destination.create');
+        return view('dashboard.destination.create');
     }
 }
