@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,12 @@ Route::post('register', [RegisterController::class, 'registration'])->name('regi
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('loginProcess');
+
+// Admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    
+    // Destination
+    Route::prefix('destination')->name('destination.')->group(function () {
+        Route::get('', [DestinationController::class, 'index'])->name('index');
+    });
+});
