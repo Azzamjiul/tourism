@@ -25,9 +25,10 @@ Route::post('register', [RegisterController::class, 'registration'])->name('regi
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('loginProcess');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 // Admin
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     
     // Destination
     Route::prefix('destination')->name('destination.')->group(function () {
