@@ -73,6 +73,17 @@
               <p>Destinations</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="#" onclick="document.getElementById('logout-form').submit()" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>Sign Out</p>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+              @csrf
+            </form>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
