@@ -22,6 +22,8 @@ class DestinationController extends Controller
 
     public function store (Request $request)
     {
+        // TODO: Add some validation
+        
         Destination::create([
             'name' => $request->name,
             'area_id' => $request->area_id,
