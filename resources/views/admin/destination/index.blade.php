@@ -17,6 +17,8 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Destination List</h3>
+
+            <a href="{{ route('admin.destination.create') }}" class="float-right btn btn-sm btn-primary">New Destination</a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">

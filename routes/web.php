@@ -33,5 +33,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     // Destination
     Route::prefix('destination')->name('destination.')->group(function () {
         Route::get('', [DestinationController::class, 'index'])->name('index');
+        Route::get('create', [DestinationController::class, 'create'])->name('create');
     });
 });
