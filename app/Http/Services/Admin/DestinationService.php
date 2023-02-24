@@ -11,7 +11,7 @@ class DestinationService
     Destination::create([
       'name' => $data->name,
       'area_id' => $data->area_id,
-      'address' => $data->address,
+      'address' => $data->alamat,
       'address_url' => $data->address_url,
       'description' => $data->description,
     ]);
