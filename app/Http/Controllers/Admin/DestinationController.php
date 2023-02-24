@@ -11,7 +11,8 @@ class DestinationController extends Controller
 {
     public function index ()
     {
-        return view('dashboard.destination.index');
+        $destinations = Destination::get();
+        return view('dashboard.destination.index', compact('destinations'));
     }
 
     public function create ()
@@ -32,6 +33,6 @@ class DestinationController extends Controller
             'description' => $request->description,
         ]);
 
-        return view('dashboard.destination.index');
+        return redirect()->route('dashboard.destination.index');
     }
 }
