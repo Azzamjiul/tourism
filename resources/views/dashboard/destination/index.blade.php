@@ -27,6 +27,7 @@
                 <tr>
                   <th style="width: 10px">#</th>
                   <th>Name</th>
+                  <th>User</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,6 +35,13 @@
                 <tr>
                   <td>{{ $key + 1 }}</td>
                   <td>{{ $destination->name }}</td>
+                  <td>
+                    @if ($destination->user)
+                      {{ $destination->user->name }}
+                    @else
+                      
+                    @endif
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

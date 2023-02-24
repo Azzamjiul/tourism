@@ -21,7 +21,7 @@ class DestinationController extends Controller
 
     public function index()
     {
-        $destinations = Destination::get();
+        $destinations = Destination::with('user')->get();
         return view('dashboard.destination.index', compact('destinations'));
     }
 
