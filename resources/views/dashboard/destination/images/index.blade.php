@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Destination Lists</h1>
+                    <h1>Image Lists</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -16,9 +16,9 @@
     <section class="content">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Destination List</h3>
+            <h3 class="card-title">Image List</h3>
 
-            <a href="{{ route('dashboard.destination.create') }}" class="float-right btn btn-sm btn-primary">New Destination</a>
+            <a href="{{ route('dashboard.destination.images.create', ['id' => $id]) }}" class="float-right btn btn-sm btn-primary">Upload Image</a>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -26,29 +26,21 @@
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Name</th>
-                  <th>User</th>
+                  <th>Image</th>
                   <th>action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach ($destinations as $key => $destination)
-                <tr>
-                  <td>{{ $key + 1 }}</td>
-                  <td>{{ $destination->name }}</td>
-                  <td>
-                    @if ($destination->user)
-                      {{ $destination->user->name }}
-                    @else
-                      
-                    @endif
-                  </td>
-                  <td>
-                    <a href="{{ route('dashboard.destination.images.index', ['id' => $destination->id]) }}" class="btn btn-primary">
-                      <i class="fa fa-image"></i>
-                    </a>
-                  </td>
-                </tr>
+                @foreach ($images as $key => $image)
+                  <tr>
+                    <td> {{ $key + 1 }} </td>
+                    <td>
+                      <img src="{{ asset('tourismImage/' . $image->path) }}" alt="">
+                    </td>
+                    <td>
+                      <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </td>
+                  </tr>
                 @endforeach
               </tbody>
             </table>

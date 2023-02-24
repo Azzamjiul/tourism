@@ -39,5 +39,11 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(func
         Route::get('', [DestinationController::class, 'index'])->name('index');
         Route::get('create', [DestinationController::class, 'create'])->name('create');
         Route::post('', [DestinationController::class, 'store'])->name('store');
+
+        Route::prefix('{id}/images')->name('images.')->group(function () {
+            Route::get('', [DestinationController::class, 'images'])->name('index');
+            Route::get('create', [DestinationController::class, 'createImage'])->name('create');
+            Route::post('', [DestinationController::class, 'storeImage'])->name('store');
+        });
     });
 });

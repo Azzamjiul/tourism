@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\DestinationService;
 use App\Models\Area;
 use App\Models\Destination;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class DestinationController extends Controller
@@ -57,5 +59,50 @@ class DestinationController extends Controller
         $user = Auth::user();
         $this->destinationService->create($request, $user);
         return redirect()->route('dashboard.destination.index');
+    }
+
+    public function images($id)
+    {
+        $images = Image::where('type', 'destination')->where('parent_id', $id)->get();
+
+        return view('dashboard.destination.images.index', compact('id', 'images'));
+    }
+
+    public function createImage($id)
+    {
+        return view('dashboard.destination.images.create', compact('id'));
+    }
+
+    public function storeImage($id, Request $request)
+    {
+        $rules = [
+            'berkas' => ['required'],
+        ];
+
+        $messages = [
+            'berkas.required' => 'Berkas tidak boleh kosong'
+        ];
+        
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->route('dashboard.destination.images.create', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $file = $request->file('berkas');
+        $name = $file->hashName();
+
+        Storage::disk('tourismImage')->put('', $file);
+
+        Image::create([
+            'type' => 'destination',
+            'parent_id' => $id,
+            'path' => $name,
+        ]);
+
+        return redirect()->route('dashboard.destination.images.index', $id);
     }
 }

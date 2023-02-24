@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/tourismImage
 /storage/*.key
 /vendor
 .env
