@@ -7,6 +7,7 @@ use App\Http\Services\Admin\DestinationService;
 use App\Models\Area;
 use App\Models\Destination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class DestinationController extends Controller
@@ -53,7 +54,8 @@ class DestinationController extends Controller
                 ->withInput();
         }
 
-        $this->destinationService->create($request);
+        $user = Auth::user();
+        $this->destinationService->create($request, $user);
         return redirect()->route('dashboard.destination.index');
     }
 }
