@@ -14,7 +14,7 @@ class DestinationController extends Controller
 
     function __construct(DestinationService $destinationService)
     {
-        $this->destinationService = $destinationService;    
+        $this->destinationService = $destinationService;
     }
 
     public function index ()

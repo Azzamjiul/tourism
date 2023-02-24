@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DestinationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,9 @@ Route::post('register', [RegisterController::class, 'registration'])->name('regi
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('loginProcess');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('pokemon/search', [PokemonController::class, 'search'])->name('pokemon.search');
+Route::get('pokemon/{id?}', [PokemonController::class, 'index'])->name('pokemon.index');
 
 // Admin
 Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
