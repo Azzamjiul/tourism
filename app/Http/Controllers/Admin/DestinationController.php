@@ -3,12 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Admin\DestinationService;
 use App\Models\Area;
 use App\Models\Destination;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
 {
+    private $destinationService;
+
+    function __construct(DestinationService $destinationService)
+    {
+        $this->destinationService = $destinationService;    
+    }
+
     public function index ()
     {
         $destinations = Destination::get();
@@ -24,15 +32,7 @@ class DestinationController extends Controller
     public function store (Request $request)
     {
         // TODO: Add some validation
-        
-        Destination::create([
-            'name' => $request->name,
-            'area_id' => $request->area_id,
-            'address' => $request->address,
-            'address_url' => $request->address_url,
-            'description' => $request->description,
-        ]);
-
+        $this->destinationService->create($request);
         return redirect()->route('dashboard.destination.index');
     }
 }
